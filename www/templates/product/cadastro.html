@@ -1,0 +1,29 @@
+<ion-view title="Novo produto">
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <label>
+          <span class="input-label">Descrição</span>
+        </label>
+        <input type="text" placeholder="Nome do produto:" ng-model="produto.nome">
+      </ion-item>
+      <ion-item>
+        <label>
+          <span class="input-label">Preço</span>
+        </label>
+        <input type="password" placeholder="Valor do produto:">
+      </ion-item>
+      <ion-item>
+        <label>
+          <span class="input-label">Imagem</span>
+        </label>
+        <input type="password" placeholder="Imagem do produto:">
+      </ion-item>
+
+      <div class="padding">
+        <button class="button button-block button-balanced" ng-click="salvarProduto()">Cadastrar</button>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

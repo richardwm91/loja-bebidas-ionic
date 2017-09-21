@@ -8,11 +8,12 @@
     <div class="list">
 
       <label class="item item-input">
-      <input type="text" placeholder="Buscar produto" ng-model="search.nome">
+        <input type="text" placeholder="Buscar produto" ng-model="search.nome">
       </label>
       </input>
 
-      <div class="item item-avatar" ng-repeat="produto in produtos | filter: search | orderBy: 'nome'" ng-click="editarProduto()">
+      <div class="item item-avatar" ng-repeat="produto in produtos | filter: search | orderBy: 'nome'"
+           ng-click="editarProduto(produto)">
         <img src="img/refris.png">
         <h2>{{produto.nome}}</h2>
         <p>{{produto.preco}}</p>

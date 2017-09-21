@@ -15,49 +15,52 @@ app.run(function ($ionicPlatform) {
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider.state('login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
+    templateUrl: 'templates/user/login.html',
     controller: 'LoginCtrl'
   });
 
-  $stateProvider.state('cadastroUsuario', {
+  $stateProvider.state('novoUsuario', {
     url: '/novo-usuario',
-    templateUrl: 'templates/cadastro.html',
+    templateUrl: 'templates/user/cadastro.html',
     controller: 'CadastroUsuarioCtrl'
   });
 
   $stateProvider.state('produtos', {
     url: '/produtos',
-    templateUrl: 'templates/produtos.html',
+    templateUrl: 'templates/product/produto.html',
     controller: 'ProdutosCtrl'
+  });
+
+  $stateProvider.state('novoProduto', {
+    url: '/novo-produto',
+    templateUrl: 'templates/product/cadastro.html',
+    controller: 'ProdutosCtrl'
+  });
+
+  $stateProvider.state('editarProduto', {
+    url: '/editar-produto/:produto',
+    templateUrl: 'templates/product/cadastro.html',
+    controller: 'ProdutosCtrl',
+    resolve: {
+      produto: function ($stateParams, ProdutoService) {
+        const produtos = ProdutoService.read()
+        for (i = 0; i < produtos.length; i++) {
+          if (produtos[i].nome == $stateParams.produto){
+            return produtos[i]
+          }
+        }
+
+        return $state.go('produtos');
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/login');
 });
 
-app.controller("LoginCtrl", function ($scope, $state) {
-  $scope.form = {
-    email: '',
-    senha: ''
-  };
-
-  $scope.form.mensagens = [];
-
-  $scope.cadastroUsuario = function () {
-    $state.go('cadastroUsuario');
-  };
-
-  $scope.login = function () {
-    if (this.form.email === '' || this.form.senha === '') {
-      return this.form.mensagens.push("Preencha os campos");
-    }
-
-    $state.go('produtos');
-  }
-});
-
 app.controller('CadastroUsuarioCtrl', function ($scope, $state) {
   $scope.form = {
-    email:'',
+    email: '',
     senha: '',
     confirmarSenha: ''
   };
@@ -70,23 +73,31 @@ app.controller('CadastroUsuarioCtrl', function ($scope, $state) {
 });
 
 app.controller('ProdutosCtrl', function ($scope, ProdutoService, $state) {
+  //exibir os produtos.
+  $scope.produtos = ProdutoService.read();
+
+  for (i = 0; i < $scope.produtos.length; i++) {
+    if ($scope.produtos[i].nome == $state.produto){
+      $scope.produto = produtos[i]
+    }
+  }
+
   var produto1 = {
-    nome:'Refrigerantes',
-    preco:'R$ 5,89'
+    nome: 'Refrigerantes',
+    preco: 'R$ 5,89'
   };
 
   //insere na lista
   ProdutoService.create(produto1);
 
-  //exibir os produtos.
-  $scope.produtos = ProdutoService.read();
-
   $scope.adicionarNovoProduto = function () {
-    //chamar tela de cadastro
+    //chamar tela de cadastro de um novo produto
+    $state.go('novoProduto');
   };
 
-  $scope.editarProduto = function () {
-
+  $scope.editarProduto = function (produto) {
+    console.log(produto)
+    $state.go('editarProduto', { produto: produto.nome });
   };
 
 });
@@ -95,13 +106,13 @@ app.factory('ProdutoService', function () {
   var lista = []; // banco volatil
 
   //exibe a lista
-  return{
+  return {
     read: function () {
- return lista;
+      return lista;
     },
 
     //recebe parametros para adicionar no banco volatil
-    create:function (objetoProduto) {
+    create: function (objetoProduto) {
       lista.push(objetoProduto)
     }
   }
