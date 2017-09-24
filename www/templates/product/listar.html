@@ -13,8 +13,8 @@
       </input>
 
       <div class="item item-avatar" ng-repeat="produto in produtos | filter: search | orderBy: 'nome'"
-           ng-click="editarProduto(produto)">
-        <img src="img/refris.png">
+           ng-click="editarProduto()">
+        <img src="img/coca.png">
         <h2>{{produto.nome}}</h2>
         <p>{{produto.preco}}</p>
       </div>

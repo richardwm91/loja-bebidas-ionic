@@ -16,6 +16,6 @@ app.controller("LoginCtrl", function ($scope, $state) {
       return this.form.mensagens.push("Preencha os campos");
     }
 
-    $state.go('produtos');
+    $state.go('categorias');
   }
 });

@@ -43,5 +43,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller: 'ProdutosEditarCtrl'
   });
 
+  $stateProvider.state('categorias', {
+    url: '/categorias',
+    templateUrl: 'templates/categories/listar.html',
+    controller: 'CategoriaListarCtrl'
+
+  });
+  $stateProvider.state('novaCategoria', {
+    url: '/novo-categoria',
+    templateUrl: 'templates/categories/cadastro.html',
+    controller: 'CategoriaCadastrarCtrl'
+  });
+
+  $stateProvider.state('editarCategoria', {
+    url: '/editar-categoria/:categoria',
+    templateUrl: 'templates/categories/editar.html',
+    controller: 'CategoriaEditarCtrl'
+  });
+
   $urlRouterProvider.otherwise('/login');
 });

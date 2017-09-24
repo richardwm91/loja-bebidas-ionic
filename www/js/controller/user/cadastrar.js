@@ -8,6 +8,6 @@ app.controller('CadastroUsuarioCtrl', function ($scope, $state) {
   $scope.form.mensagens = [];
 
   $scope.novoCadastro = function () {
-    $state.go('produtos')
+    $state.go('categorias')
   };
 });
