@@ -15,94 +15,51 @@ app.run(function ($ionicPlatform) {
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider.state('login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
+    templateUrl: 'templates/user/login.html',
     controller: 'LoginCtrl'
   });
 
-  $stateProvider.state('cadastroUsuario', {
+  $stateProvider.state('novoUsuario', {
     url: '/novo-usuario',
-    templateUrl: 'templates/cadastro.html',
+    templateUrl: 'templates/user/cadastro.html',
     controller: 'CadastroUsuarioCtrl'
   });
 
   $stateProvider.state('produtos', {
     url: '/produtos',
-    templateUrl: 'templates/produtos.html',
-    controller: 'ProdutosCtrl'
+    templateUrl: 'templates/product/listar.html',
+    controller: 'ProdutosListarCtrl'
+
+  });
+  $stateProvider.state('novoProduto', {
+    url: '/novo-produto',
+    templateUrl: 'templates/product/cadastro.html',
+    controller: 'ProdutosCadastrarCtrl'
+  });
+
+  $stateProvider.state('editarProduto', {
+    url: '/editar-produto/:produto',
+    templateUrl: 'templates/product/editar.html',
+    controller: 'ProdutosEditarCtrl'
+  });
+
+  $stateProvider.state('categorias', {
+    url: '/categorias',
+    templateUrl: 'templates/categories/listar.html',
+    controller: 'CategoriaListarCtrl'
+
+  });
+  $stateProvider.state('novaCategoria', {
+    url: '/novo-categoria',
+    templateUrl: 'templates/categories/cadastro.html',
+    controller: 'CategoriaCadastrarCtrl'
+  });
+
+  $stateProvider.state('editarCategoria', {
+    url: '/editar-categoria/:categoria',
+    templateUrl: 'templates/categories/editar.html',
+    controller: 'CategoriaEditarCtrl'
   });
 
   $urlRouterProvider.otherwise('/login');
-});
-
-app.controller("LoginCtrl", function ($scope, $state) {
-  $scope.form = {
-    email: '',
-    senha: ''
-  };
-
-  $scope.form.mensagens = [];
-
-  $scope.cadastroUsuario = function () {
-    $state.go('cadastroUsuario');
-  };
-
-  $scope.login = function () {
-    if (this.form.email === '' || this.form.senha === '') {
-      return this.form.mensagens.push("Preencha os campos");
-    }
-
-    $state.go('produtos');
-  }
-});
-
-app.controller('CadastroUsuarioCtrl', function ($scope, $state) {
-  $scope.form = {
-    email:'',
-    senha: '',
-    confirmarSenha: ''
-  };
-
-  $scope.form.mensagens = [];
-
-  $scope.novoCadastro = function () {
-    $state.go('produtos')
-  };
-});
-
-app.controller('ProdutosCtrl', function ($scope, ProdutoService, $state) {
-  var produto1 = {
-    nome:'Refrigerantes',
-    preco:'R$ 5,89'
-  };
-
-  //insere na lista
-  ProdutoService.create(produto1);
-
-  //exibir os produtos.
-  $scope.produtos = ProdutoService.read();
-
-  $scope.adicionarNovoProduto = function () {
-    //chamar tela de cadastro
-  };
-
-  $scope.editarProduto = function () {
-
-  };
-
-});
-
-app.factory('ProdutoService', function () {
-  var lista = []; // banco volatil
-
-  //exibe a lista
-  return{
-    read: function () {
- return lista;
-    },
-
-    //recebe parametros para adicionar no banco volatil
-    create:function (objetoProduto) {
-      lista.push(objetoProduto)
-    }
-  }
 });

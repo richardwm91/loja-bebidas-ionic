@@ -13,7 +13,30 @@
 
   <script src="cordova.js"></script>
 
+
+  <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDp8v44EmWsgTXj-Xwa-dfvHu3wxLkwgbw",
+      authDomain: "loja-bebidas-ionic.firebaseapp.com",
+      databaseURL: "https://loja-bebidas-ionic.firebaseio.com",
+      projectId: "loja-bebidas-ionic",
+      storageBucket: "loja-bebidas-ionic.appspot.com",
+      messagingSenderId: "200574695688"
+    };
+    firebase.initializeApp(config);
+  </script>
+
   <script src="js/app.js"></script>
+  <script src="js/controller/user/login.js"></script>
+  <script src="js/controller/user/cadastrar.js"></script>
+  <script src="js/controller/product/editar.js"></script>
+  <script src="js/controller/product/listar.js"></script>
+  <script src="js/controller/product/cadastrar.js"></script>
+  <script src="js/controller/categories/editar.js"></script>
+  <script src="js/controller/categories/listar.js"></script>
+  <script src="js/controller/categories/cadastrar.js"></script>
 </head>
 <body ng-app="servfesta">
 

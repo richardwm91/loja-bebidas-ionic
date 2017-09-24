@@ -1,0 +1,25 @@
+<ion-view title="Categorias">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-ios-plus-empty" ng-click="novaCategoria()"></button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <div class="list">
+
+      <label class="item item-input">
+        <input type="text" placeholder="Buscar categoria" ng-model="search.nome">
+      </label>
+      </input>
+
+      <div class="item item-avatar" ng-repeat="categoria in categorias | filter: search | orderBy: 'nome'"
+           ng-click="editarCategoria(categoria)">
+        <img src={{categoria.imagem}}>
+        <h2>{{categoria.nome}}</h2>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>

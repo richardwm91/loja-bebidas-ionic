@@ -1,0 +1,26 @@
+<ion-view title="Produtos">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-ios-plus-empty" ng-click="novoProduto()"></button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <div class="list">
+
+      <label class="item item-input">
+        <input type="text" placeholder="Buscar produto" ng-model="search.nome">
+      </label>
+      </input>
+
+      <div class="item item-avatar" ng-repeat="produto in produtos | filter: search | orderBy: 'nome'"
+           ng-click="editarProduto()">
+        <img src="img/coca.png">
+        <h2>{{produto.nome}}</h2>
+        <p>{{produto.preco}}</p>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>

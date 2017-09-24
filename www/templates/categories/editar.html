@@ -1,0 +1,22 @@
+<ion-view title="Editar Categoria">
+  <ion-content>
+
+    <div class="item item-image">
+      <img src="img/refris.png">
+    </div>
+
+    <ion-list>
+      <ion-item>
+        <label>
+          <span class="input-label">Descrição</span>
+        </label>
+        <input type="text" placeholder="Nome da categoria:" ng-model="categoria.nome">
+      </ion-item>
+
+      <div class="padding">
+        <button class="button button-block button-balanced" ng-click="salvarCategoria()">Cadastrar</button>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
