@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\www",
+    "\\www\\js",
+    "\\www\\js\\controller",
+    "\\www\\js\\controller\\categories",
+    "\\www\\templates",
+    "\\www\\templates\\categories"
+  ],
+  "SelectedNode": "\\www\\templates\\categories\\listar.html",
+  "PreviewInSolutionExplorer": false
+}

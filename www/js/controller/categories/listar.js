@@ -1,45 +1,16 @@
-app.controller('CategoriaListarCtrl', function ($scope, CategoriaService, $state) {
-  var categoria1 = {
-    imagem:'img/refris.png',
-    nome: 'Refrigerantes'
-  };
+app.controller('CategoriaListarCtrl', function ($scope, $state) {
+  var ref = firebase.database().ref('categorias');
 
-  var categoria2 = {
-    imagem:'img/refris.png',
-    nome: 'Sucos',
-  };
-
-  //insere na lista
-  CategoriaService.create(categoria1,categoria2);
-
-  //exibir as categorias.
-  $scope.categorias = CategoriaService.read();
+  ref.on('value', function(data){
+    $scope.categorias = data.val();
+    $scope.$apply()
+  });
 
   $scope.editarCategoria = function (categoria) {
-    console.log("listar",categoria);
-    $state.go('produtos', {
+  console.log("listar", categoria)
+    $state.go('editarCategoria' ,{
       categoria:JSON.stringify(categoria)
     })
   };
 
-  $scope.novaCategoria = function () {
-    $state.go('novaCategoria')
-  }
-
-});
-
-app.factory('CategoriaService', function () {
-  var lista = []; // banco volatil
-
-  //exibe a lista
-  return {
-    read: function () {
-      return lista;
-    },
-
-    //recebe parametros para adicionar no banco volatil
-    create: function (objetoCategoria) {
-      lista.push(objetoCategoria)
-    }
-  }
 });

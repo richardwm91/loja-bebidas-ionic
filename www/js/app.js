@@ -36,7 +36,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/product/cadastro.html',
     controller: 'ProdutosCadastrarCtrl'
   });
-
   $stateProvider.state('editarProduto', {
     url: '/editar-produto/:produto',
     templateUrl: 'templates/product/editar.html',
@@ -54,7 +53,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/categories/cadastro.html',
     controller: 'CategoriaCadastrarCtrl'
   });
-
   $stateProvider.state('editarCategoria', {
     url: '/editar-categoria/:categoria',
     templateUrl: 'templates/categories/editar.html',
