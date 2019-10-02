@@ -1,24 +1,65 @@
-// Ionic Starter App
+var app = angular.module('servfesta', ['ionic']);
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
-
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
+app.run(function ($ionicPlatform) {
+  $ionicPlatform.ready(function () {
+    if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
-    if(window.StatusBar) {
+    if (window.StatusBar) {
       StatusBar.styleDefault();
     }
   });
-})
+});
+
+app.config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('login', {
+    url: '/login',
+    templateUrl: 'templates/user/login.html',
+    controller: 'LoginCtrl'
+  });
+
+  $stateProvider.state('novoUsuario', {
+    url: '/novo-usuario',
+    templateUrl: 'templates/user/cadastro.html',
+    controller: 'CadastroUsuarioCtrl'
+  });
+
+  $stateProvider.state('produtos', {
+    url: '/produtos',
+    templateUrl: 'templates/product/listar.html',
+    controller: 'ProdutosListarCtrl'
+
+  });
+  $stateProvider.state('novoProduto', {
+    url: '/novo-produto',
+    templateUrl: 'templates/product/cadastro.html',
+    controller: 'ProdutosCadastrarCtrl'
+  });
+
+  $stateProvider.state('editarProduto', {
+    url: '/editar-produto/:produto',
+    templateUrl: 'templates/product/editar.html',
+    controller: 'ProdutosEditarCtrl'
+  });
+
+  $stateProvider.state('categorias', {
+    url: '/categorias',
+    templateUrl: 'templates/categories/listar.html',
+    controller: 'CategoriaListarCtrl'
+
+  });
+  $stateProvider.state('novaCategoria', {
+    url: '/novo-categoria',
+    templateUrl: 'templates/categories/cadastro.html',
+    controller: 'CategoriaCadastrarCtrl'
+  });
+
+  $stateProvider.state('editarCategoria', {
+    url: '/editar-categoria/:categoria',
+    templateUrl: 'templates/categories/editar.html',
+    controller: 'CategoriaEditarCtrl'
+  });
+
+  $urlRouterProvider.otherwise('/login');
+});

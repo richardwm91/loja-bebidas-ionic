@@ -1,0 +1,34 @@
+<ion-view title="Editar produto">
+  <ion-content>
+
+    <div class="item item-image">
+      <img src="img/refris.png">
+    </div>
+
+    <ion-list>
+      <ion-item>
+        <label>
+          <span class="input-label">Descrição</span>
+        </label>
+        <input type="text" placeholder="Nome do produto:" ng-model="produto.nome">
+      </ion-item>
+      <ion-item>
+        <label>
+          <span class="input-label">Preço</span>
+        </label>
+        <input type="text" placeholder="Valor do produto:" ng-model="produto.preco">
+      </ion-item>
+      <!--<ion-item>-->
+      <!--<label>-->
+      <!--<span class="input-label">Imagem</span>-->
+      <!--</label>-->
+      <!--<input type="password" placeholder="Imagem do produto:">-->
+      <!--</ion-item>-->
+
+      <div class="padding">
+        <button class="button button-block button-balanced" ng-click="salvarProduto()">Cadastrar</button>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="Nova Categoria">
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <label>
+          <span class="input-label">Descrição</span>
+        </label>
+        <input type="text" placeholder="Nome da categoria:" ng-model="categoria.nome">
+      </ion-item>
+      <ion-item>
+        <label>
+          <span class="input-label">Imagem</span>
+        </label>
+        <input type="password" placeholder="Imagem da categoria:">
+      </ion-item>
+
+      <div class="padding">
+        <button class="button button-block button-balanced" ng-click="cadastrarCategoria()">Cadastrar</button>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view title="Novo usuário">
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <label>
+          <span class="input-label">Email</span>
+        </label>
+        <input type="text" placeholder="Digite o seu email">
+      </ion-item>
+      <div class="padding" ng-if="form.mensagens.length">
+        <ul>
+          <li ng-repeat="mensagem in form.mensagens">{{ mensagem }}</li>
+        </ul>
+      </div>
+      <ion-item>
+        <label>
+          <span class="input-label">Senha</span>
+        </label>
+        <input type="password" placeholder="Digite a senha">
+      </ion-item>
+      <ion-item>
+        <label>
+          <span class="input-label">Confirme a senha</span>
+        </label>
+        <input type="password" placeholder="Digite a senha">
+      </ion-item>
+      <div class="padding" ng-if="form.mensagens.length">
+        <ul>
+          <li ng-repeat="mensagem in form.mensagens">{{ mensagem }}</li>
+        </ul>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-balanced" ng-click="novoCadastro()">Cadastrar</button>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
